@@ -1,5 +1,6 @@
 const axios = require('axios');
 const _ = require('lodash');
+const path = require('path');
 let cheerio = require('cheerio');
 
 exports = module.exports = async function onMessage(message) {
@@ -11,6 +12,9 @@ exports = module.exports = async function onMessage(message) {
   let mTime = message.rawObj.MMDigestTime;
 
   console.log(`[${mTime}] ${topic} <${sender.name()}> : ${content}`);
+
+  //如果是系统消息则不进行回复
+  if(message.type() === 10000) return;
 
   /*******************************************************************/
 
@@ -53,7 +57,7 @@ exports = module.exports = async function onMessage(message) {
       })
     }
   };
-
+  
   let feature;
   let keyword;
 
@@ -85,7 +89,7 @@ exports = module.exports = async function onMessage(message) {
     }
 
     axios.post('http://www.tuling123.com/openapi/api', {
-        key: '',
+        key: '358a41932e654a01973df1cf8cfca054',
         info: keyword,
         userid: sender.id.substring(1, 32)
       })

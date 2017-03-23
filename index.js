@@ -15,8 +15,7 @@ const isProd = process.env.NODE_ENV === 'production';
 const bot = Wechaty.instance();
 
 // const EVENT_LIST = ['scan', 'logout', 'login', 'friend', 'room-join', 'room-leave', 'room-topic', 'message', 'heartbeat', 'error'];
-const EVENT_LIST = ['scan', 'login', 'message'];
-
+const EVENT_LIST = ['scan', 'login', 'message', 'friend'];
 
 // Load lisenter
 const loadListener = (evt) => {
